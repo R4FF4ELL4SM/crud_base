@@ -4,7 +4,7 @@
 <h1 class="h3 mb-3">Editar pessoa</h1>
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('pessoas.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('pessoas.update', $pessoa) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT') {{-- o HTML só envia POST; isto vira PUT --}}
             @include('pessoas._campos')

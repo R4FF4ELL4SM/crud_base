@@ -35,7 +35,7 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        return $this->nivel_acesso ===2;
+        return (int) $this->nivel_acesso === 2;
         
     }
 }

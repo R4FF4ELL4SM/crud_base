@@ -23,17 +23,16 @@ class PessoaController extends Controller
     // CRIAR (2/2): recebe o formulário já validado e grava
     public function store(PessoaRequest $request)
     {
-       $dados = $request->safe()->only(['nome']);
+        $dados = $request->safe()->only(['nome']);
 
-    // Se enviaram foto, salva em storage/app/public/fotos e guarda o caminho
-    if ($request->hasFile('foto')) {
-        $dados['foto'] = $request->file('foto')->store('fotos', 'public');
+        // Se enviaram foto, salva em storage/app/public/fotos e guarda o caminho
+        if ($request->hasFile('foto')) {
+            $dados['foto'] = $request->file('foto')->store('fotos', 'public');
         }
 
-    Pessoa::create($dados);
-    return redirect()->route('pessoas.index')
-        ->with('sucesso', 'Pessoa cadastrada com sucesso!');
-
+        Pessoa::create($dados);
+        return redirect()->route('pessoas.index')
+            ->with('sucesso', 'Pessoa cadastrada com sucesso!');
     }
 
     // EDITAR (1/2): mostra o formulário preenchido ($pessoa vem da URL)
